@@ -1,10 +1,16 @@
 package io.github.AnnaB05.inputs;
 
+import io.github.AnnaB05.main.GamePanel;
+
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
 public class MouseInputs implements MouseListener, MouseMotionListener {
+    private GamePanel gamePanel;
+    public MouseInputs(GamePanel gamePanel) {
+        this.gamePanel = gamePanel;
+    }
     @Override
     public void mouseClicked(MouseEvent e) {
         System.out.println("mouse clicked!");
@@ -37,7 +43,7 @@ public class MouseInputs implements MouseListener, MouseMotionListener {
 
     @Override
     public void mouseMoved(MouseEvent e) {
-        System.out.println("mouse moved!");
+        gamePanel.setRectPosition(e.getX(), e.getY());
 
     }
 }
