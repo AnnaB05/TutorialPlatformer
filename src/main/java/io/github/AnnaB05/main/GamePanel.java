@@ -2,7 +2,9 @@ package io.github.AnnaB05.main;
 
 import javax.swing.*;
 import java.awt.*;
-
+/**
+ * panel for game graphics to be drawn
+ */
 public class GamePanel extends JPanel {
 
     public GamePanel() {
