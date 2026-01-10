@@ -20,7 +20,7 @@ public class GamePanel extends JPanel {
 
     private MouseInputs mouseInputs;
     private float xDelta = 100, yDelta = 100; //sets rect's initial position
-    private BufferedImage img, subImg;
+    private BufferedImage img;
 
 
 
@@ -81,8 +81,8 @@ public class GamePanel extends JPanel {
      */
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        subImg = img.getSubimage(3*32 ,6*32,32,32);
-        g.drawImage(subImg,(int)xDelta,(int)yDelta,90,80,null);
+
+        // g.drawImage(subImg,(int)xDelta,(int)yDelta,90,80,null);
     }
 
 
