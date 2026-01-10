@@ -39,10 +39,15 @@ public class GamePanel extends JPanel {
     }
 
     private void importImg() {
-        InputStream is = getClass().getResourceAsStream("/YellowGuy.png");
 
-        try {
+        try (InputStream is = getClass().getResourceAsStream("/YellowGuy.png")) {
+            if (is == null) {
+                throw new RuntimeException("Resource `/YellowGuy.png` not found");
+            }
             img = ImageIO.read(is);
+            if (img == null) {
+                throw new RuntimeException("Failed to read `/YellowGuy.png`");
+            }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
