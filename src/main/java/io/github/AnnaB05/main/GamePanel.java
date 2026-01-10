@@ -12,6 +12,8 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 
+import static io.github.AnnaB05.utilz.Constants.PlayerConstants.*;
+
 
 /**
  * panel for game graphics to be drawn
@@ -21,8 +23,9 @@ public class GamePanel extends JPanel {
     private MouseInputs mouseInputs;
     private float xDelta = 100, yDelta = 100; //sets rect's initial position
     private BufferedImage img;
-    private BufferedImage[] idleAni; // array to hold idle animation frames
+    private BufferedImage[][] animations; // array to hold idle animation frames
     private int aniTick, aniIndex, aniSpeed = 15;
+    private int playerAction = IDLE;
 
 
 
@@ -43,10 +46,12 @@ public class GamePanel extends JPanel {
     }
 
     private void loadAnimations() {
-        idleAni = new BufferedImage[10];
+        animations = new BufferedImage[7][12]; // 7 animations, with the highest frame count being 12
 
-        for(int i =0; i < idleAni.length; i++) {
-            idleAni[i] = img.getSubimage(i*32, 0, 32, 32);
+        for(int j = 0; j < animations.length; j++) {
+            for(int i =0; i < animations[j].length; i++) {
+                animations[j][i] = img.getSubimage(i*32, j*32, 32, 32);
+            }
         }
     }
 
@@ -94,7 +99,7 @@ public class GamePanel extends JPanel {
         if(aniTick >= aniSpeed) {
             aniTick = 0;
             aniIndex ++;
-            if(aniIndex >= idleAni.length) {
+            if(aniIndex >= 12) {
                 aniIndex = 0;
             }
         }
@@ -106,7 +111,7 @@ public class GamePanel extends JPanel {
         super.paintComponent(g);
 
         updateAnimationTick();
-        g.drawImage(idleAni[aniIndex],(int)xDelta,(int)yDelta,90,80,null);
+        g.drawImage(animations[playerAction][aniIndex],(int)xDelta,(int)yDelta,90,80,null);
     }
 
 
