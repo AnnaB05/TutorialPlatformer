@@ -21,6 +21,8 @@ public class GamePanel extends JPanel {
     private MouseInputs mouseInputs;
     private float xDelta = 100, yDelta = 100; //sets rect's initial position
     private BufferedImage img;
+    private BufferedImage[] idleAni; // array to hold idle animation frames
+    private int aniTick, aniIndex, aniSpeed = 15;
 
 
 
@@ -29,6 +31,8 @@ public class GamePanel extends JPanel {
         mouseInputs = new MouseInputs(this);
 
         importImg();
+        loadAnimations();
+
         addKeyListener(new KeyboardInputs(this));
         addMouseListener(mouseInputs);
         addMouseMotionListener(mouseInputs);
@@ -36,6 +40,14 @@ public class GamePanel extends JPanel {
         setPanelSize(); // sets panel size
         setFocusable(true); // allows panel to receive focus and key inputs
 
+    }
+
+    private void loadAnimations() {
+        idleAni = new BufferedImage[10];
+
+        for(int i =0; i < idleAni.length; i++) {
+            idleAni[i] = img.getSubimage(i*32, 0, 32, 32);
+        }
     }
 
     private void importImg() {
@@ -76,14 +88,27 @@ public class GamePanel extends JPanel {
 
     }
 
+    private void updateAnimationTick() {
+
+        aniTick++;
+        if(aniTick >= aniSpeed) {
+            aniTick = 0;
+            aniIndex ++;
+            if(aniIndex >= idleAni.length) {
+                aniIndex = 0;
+            }
+        }
+    }
     /**
      * allows for drawing graphics on the panel
      */
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        // g.drawImage(subImg,(int)xDelta,(int)yDelta,90,80,null);
+        updateAnimationTick();
+        g.drawImage(idleAni[aniIndex],(int)xDelta,(int)yDelta,90,80,null);
     }
+
 
 
 
