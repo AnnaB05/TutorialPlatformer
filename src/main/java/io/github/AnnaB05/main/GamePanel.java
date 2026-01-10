@@ -20,7 +20,7 @@ public class GamePanel extends JPanel {
 
     private MouseInputs mouseInputs;
     private float xDelta = 100, yDelta = 100; //sets rect's initial position
-    private BufferedImage img;
+    private BufferedImage img, subImg;
 
 
 
@@ -39,7 +39,7 @@ public class GamePanel extends JPanel {
     }
 
     private void importImg() {
-        InputStream is = getClass().getResourceAsStream("/run.png");
+        InputStream is = getClass().getResourceAsStream("/YellowGuy.png");
 
         try {
             img = ImageIO.read(is);
@@ -76,9 +76,8 @@ public class GamePanel extends JPanel {
      */
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-
-        //g.drawImage(null,x,y,null);
-
+        subImg = img.getSubimage(3*32 ,6*32,32,32);
+        g.drawImage(subImg,(int)xDelta,(int)yDelta,90,80,null);
     }
 
 
