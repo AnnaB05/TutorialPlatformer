@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import static io.github.AnnaB05.utilz.Constants.PlayerConstants.*;
+import static io.github.AnnaB05.utilz.Constants.Directions.*;
 
 
 /**
@@ -26,6 +27,7 @@ public class GamePanel extends JPanel {
     private BufferedImage[][] animations; // array to hold idle animation frames
     private int aniTick, aniIndex, aniSpeed = 15;
     private int playerAction = IDLE;
+    private int playerDir = -1;
 
 
 
@@ -78,18 +80,8 @@ public class GamePanel extends JPanel {
         setMaximumSize(size);
     }
 
-    public void changeXDelta(int value) {
-        this.xDelta += value;
+    public void setDirection(int direction) {
 
-    }
-    public void changeYDelta(int value) {
-        this.yDelta += value;
-
-    }
-
-    public void setRectPosition(int x, int y) {
-        this.xDelta = x;
-        this.yDelta = y;
 
     }
 
@@ -99,7 +91,7 @@ public class GamePanel extends JPanel {
         if(aniTick >= aniSpeed) {
             aniTick = 0;
             aniIndex ++;
-            if(aniIndex >= 12) {
+            if(aniIndex >= GetSpriteAmount(playerAction)) {
                 aniIndex = 0;
             }
         }
