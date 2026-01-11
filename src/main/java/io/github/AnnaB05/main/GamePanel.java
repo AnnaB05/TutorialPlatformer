@@ -107,6 +107,7 @@ public class GamePanel extends JPanel {
         }
     }
 
+    /// method that sets player animation based on input
     private void setAnimation() {
         int startAni = playerAction;
         if(moving) {
@@ -116,6 +117,7 @@ public class GamePanel extends JPanel {
         }
     }
 
+    /// method for updating player position
     private void updatePos() {
         if(moving) {
             switch (playerDir) {
