@@ -21,6 +21,7 @@ import static io.github.AnnaB05.utilz.Constants.Directions.*;
  */
 public class GamePanel extends JPanel {
 
+
     private MouseInputs mouseInputs;
     private float xDelta = 100, yDelta = 100; //sets rect's initial position
     private BufferedImage img;
@@ -28,6 +29,7 @@ public class GamePanel extends JPanel {
     private int aniTick, aniIndex, aniSpeed = 15;
     private int playerAction = IDLE;
     private int playerDir = -1;
+    private boolean moving = false;
 
 
 
@@ -81,8 +83,12 @@ public class GamePanel extends JPanel {
     }
 
     public void setDirection(int direction) {
+        this.playerDir = direction;
+        moving = true;
+    }
 
-
+    public void setMoving (boolean moving) {
+        this.moving = moving;
     }
 
     private void updateAnimationTick() {
@@ -96,6 +102,35 @@ public class GamePanel extends JPanel {
             }
         }
     }
+
+    private void setAnimation() {
+        int startAni = playerAction;
+        if(moving) {
+            playerAction = RUNNING;
+        } else {
+            playerAction = IDLE;
+        }
+    }
+
+    private void updatePos() {
+        if(moving) {
+            switch (playerDir) {
+                case LEFT:
+                    xDelta -= 5;
+                    break;
+                case RIGHT:
+                    xDelta += 5;
+                    break;
+                case UP:
+                    yDelta -= 5;
+                    break;
+                case DOWN:
+                    yDelta += 5;
+                    break;
+            }
+        }
+    }
+
     /**
      * allows for drawing graphics on the panel
      */
@@ -103,6 +138,9 @@ public class GamePanel extends JPanel {
         super.paintComponent(g);
 
         updateAnimationTick();
+        setAnimation();
+        updatePos();
+
         g.drawImage(animations[playerAction][aniIndex],(int)xDelta,(int)yDelta,90,80,null);
     }
 
