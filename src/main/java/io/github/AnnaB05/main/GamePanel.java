@@ -17,7 +17,7 @@ import static io.github.AnnaB05.utilz.Constants.Directions.*;
 
 
 /**
- * panel for game graphics to be drawn
+ * class where game graphics will be drawn
  */
 public class GamePanel extends JPanel {
 
@@ -33,6 +33,7 @@ public class GamePanel extends JPanel {
 
 
 
+    /// method for displaying the game panel
     public GamePanel() {
 
         mouseInputs = new MouseInputs(this);
@@ -49,6 +50,7 @@ public class GamePanel extends JPanel {
 
     }
 
+    /// method for handling the player character's animations
     private void loadAnimations() {
         animations = new BufferedImage[7][12]; // 7 animations, with the highest frame count being 12
 
@@ -59,6 +61,7 @@ public class GamePanel extends JPanel {
         }
     }
 
+    /// method for handling img imports, try catch in case img cannot be found
     private void importImg() {
 
         try (InputStream is = getClass().getResourceAsStream("/YellowGuy.png")) {
@@ -91,6 +94,7 @@ public class GamePanel extends JPanel {
         this.moving = moving;
     }
 
+    //method for updating animation tick
     private void updateAnimationTick() {
 
         aniTick++;
@@ -141,7 +145,7 @@ public class GamePanel extends JPanel {
         setAnimation(); // sets player animation based on input
         updatePos(); // updates player position based on input
 
-        g.drawImage(animations[playerAction][aniIndex],(int)xDelta,(int)yDelta,90,80,null);
+        g.drawImage(animations[playerAction][aniIndex],(int)xDelta,(int)yDelta,90,80,null); //no need for observer at the moment
     }
 
 
