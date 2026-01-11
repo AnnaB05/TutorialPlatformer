@@ -37,8 +37,7 @@ public class Game implements Runnable {
 
         double timePerFrame = 1000000000.0 / FPS_SET; //each frame should last 1 million nanoseconds
         double timePerUpdate = 1000000000.0 / UPS_SET; //each update should last 1 million nanoseconds
-        long lastFrame = System.nanoTime();
-        long now = System.nanoTime();
+
 
         int frames = 0;
         int updates = 0;
@@ -47,13 +46,15 @@ public class Game implements Runnable {
         long previousTime = System.nanoTime();
 
         double deltaU = 0;
+        double deltaF = 0;
 
         while(true) {
 
-            now = System.nanoTime();
+
             long currentTime = System.nanoTime();
 
             deltaU += (currentTime - previousTime) / timePerUpdate; //calculates how many updates are needed
+            deltaU += (currentTime - previousTime) / timePerFrame; //calculates how many frames are needed
             previousTime = currentTime;
             if (deltaU >= 1) { //prevents lost time from being wasted and instead adds lost time to the next update
                 //update();
@@ -61,11 +62,16 @@ public class Game implements Runnable {
                 deltaU--;
             }
 
-            if(now - lastFrame >= timePerFrame) { //if enough time has passed, renders the next frame
+            if (deltaF >= 1) {
+                gamePanel.repaint();
+                frames++;
+                deltaF--;
+            }
+            /*if(now - lastFrame >= timePerFrame) { //if enough time has passed, renders the next frame
                 gamePanel.repaint();
                 lastFrame = now;
                 frames++;
-            }
+            }*/
 
 
             if(System.currentTimeMillis() - lastCheck >= 1000) {
