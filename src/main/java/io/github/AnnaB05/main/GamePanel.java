@@ -69,12 +69,13 @@ public class GamePanel extends JPanel {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            try{
+            try {
                 is.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
+    }
 
 
 
