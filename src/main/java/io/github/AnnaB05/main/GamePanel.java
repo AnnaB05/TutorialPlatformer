@@ -23,13 +23,15 @@ public class GamePanel extends JPanel {
 
 
     private MouseInputs mouseInputs;
+    private Game game;
 
 
 
     /// method for displaying the game panel
-    public GamePanel() {
+    public GamePanel(Game  game) {
 
         mouseInputs = new MouseInputs(this);
+        this.game = game;
 
 
         addKeyListener(new KeyboardInputs(this));
@@ -58,6 +60,7 @@ public class GamePanel extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
+        game.render(g);
     }
 
 

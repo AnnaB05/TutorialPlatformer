@@ -1,6 +1,9 @@
 package io.github.AnnaB05.main;
 
 
+import io.github.AnnaB05.entities.*;
+
+import java.awt.*;
 
 /**
  * game class holds everything together
@@ -14,15 +17,26 @@ public class Game implements Runnable {
     private final int FPS_SET = 120;
     private final int UPS_SET = 200;
 
+    private Player player;
+
     /** constructor for Game **/
     public Game() {
 
-        gamePanel = new GamePanel();
+        gamePanel = new GamePanel(this);
         gameWindow = new GameWindow(gamePanel);
         gamePanel.requestFocus();
 
+        initClasses();
+
+
         startGameLoop();
 
+
+
+    }
+
+    private void initClasses() {
+        player  = new Player (200,200);
     }
 
     //method for gameThread
@@ -32,8 +46,12 @@ public class Game implements Runnable {
     }
 
     public void update() {
-        gamePanel.updateGame();
+        player.update();
 
+    }
+
+    public void render(Graphics g) {
+        player.render(g);
     }
 
     /**
