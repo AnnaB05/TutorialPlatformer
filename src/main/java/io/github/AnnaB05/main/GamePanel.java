@@ -66,6 +66,7 @@ public class GamePanel extends JPanel {
         InputStream is = getClass().getResourceAsStream("/YellowGuy.png");
         try {
             img = ImageIO.read(is);
+
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -82,9 +83,9 @@ public class GamePanel extends JPanel {
     // sets panel size
     private void setPanelSize() {
         Dimension size = new Dimension(1280,800);
-        setMinimumSize(size);
+        /*setMinimumSize(size);
         setPreferredSize(size);
-        setMaximumSize(size);
+        setMaximumSize(size);*/
     }
 
     public void setDirection(int direction) {
