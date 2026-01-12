@@ -69,16 +69,16 @@ public class Player extends Entity {
         if(moving) {
             switch (playerDir) {
                 case LEFT:
-                    x -= 5;
+                    x -= 1;
                     break;
                 case RIGHT:
-                    x += 5;
+                    x += 1;
                     break;
                 case UP:
-                    y -= 5;
+                    y -= 1;
                     break;
                 case DOWN:
-                    y += 5;
+                    y += 1;
                     break;
             }
         }
