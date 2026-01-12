@@ -11,6 +11,10 @@ import static io.github.AnnaB05.utilz.Constants.PlayerConstants.*;
 
 public class Player extends Entity {
     private BufferedImage[][] animations; // array to hold idle animation frames
+    private int aniTick, aniIndex, aniSpeed = 15;
+    private int playerAction = IDLE;
+    private int playerDir = -1;
+    private boolean moving = false;
 
     public Player(float x, float y) {
         super(x, y);
@@ -61,16 +65,16 @@ public class Player extends Entity {
         if(moving) {
             switch (playerDir) {
                 case LEFT:
-                    xDelta -= 5;
+                    x -= 5;
                     break;
                 case RIGHT:
-                    xDelta += 5;
+                    x += 5;
                     break;
                 case UP:
-                    yDelta -= 5;
+                    y -= 5;
                     break;
                 case DOWN:
-                    yDelta += 5;
+                    y += 5;
                     break;
             }
         }
