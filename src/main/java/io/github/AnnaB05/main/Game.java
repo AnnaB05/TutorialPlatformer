@@ -1,5 +1,7 @@
 package io.github.AnnaB05.main;
 
+
+
 /**
  * game class holds everything together
  * this is where everything  will start
@@ -54,10 +56,10 @@ public class Game implements Runnable {
             long currentTime = System.nanoTime();
 
             deltaU += (currentTime - previousTime) / timePerUpdate; //calculates how many updates are needed
-            deltaU += (currentTime - previousTime) / timePerFrame; //calculates how many frames are needed
+            deltaF += (currentTime - previousTime) / timePerFrame; //calculates how many frames are needed
             previousTime = currentTime;
             if (deltaU >= 1) { //prevents lost time from being wasted and instead adds lost time to the next update
-                //update();
+                // update();
                 updates++;
                 deltaU--;
             }
