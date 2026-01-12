@@ -21,13 +21,11 @@ public class Game implements Runnable {
 
     /** constructor for Game **/
     public Game() {
+        initClasses();
 
         gamePanel = new GamePanel(this);
         gameWindow = new GameWindow(gamePanel);
         gamePanel.requestFocus();
-
-        initClasses();
-
 
         startGameLoop();
 
