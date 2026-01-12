@@ -29,8 +29,6 @@ public class Game implements Runnable {
 
         startGameLoop();
 
-
-
     }
 
     private void initClasses() {
