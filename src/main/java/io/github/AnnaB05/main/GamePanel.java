@@ -151,8 +151,6 @@ public class GamePanel extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-
-
         g.drawImage(animations[playerAction][aniIndex],(int)xDelta,(int)yDelta,90,80,null); //no need for observer at the moment
     }
 

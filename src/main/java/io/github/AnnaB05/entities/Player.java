@@ -1,6 +1,7 @@
 package io.github.AnnaB05.entities;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,14 +19,17 @@ public class Player extends Entity {
 
     public Player(float x, float y) {
         super(x, y);
+        loadAnimations();
     }
 
     public void update() {
-        // Update player state
+        updateAnimationTick();
+        setAnimation(); // sets player animation based on input
+        updatePos(); // updates player position based on input
     }
 
-    public void render() {
-        // Render player on screen
+    public void render(Graphics g) {
+        g.drawImage(animations[playerAction][aniIndex],(int)x,(int)y,90,80,null); //no need for observer at the moment
     }
 
     public void setDirection(int direction) {
