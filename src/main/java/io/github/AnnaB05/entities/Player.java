@@ -14,8 +14,8 @@ public class Player extends Entity {
     private BufferedImage[][] animations; // array to hold idle animation frames
     private int aniTick, aniIndex, aniSpeed = 15;
     private int playerAction = IDLE;
-    private int playerDir = -1;
     private boolean moving = false;
+    private boolean left, right, up, down;
 
     public Player(float x, float y) {
         super(x, y);
