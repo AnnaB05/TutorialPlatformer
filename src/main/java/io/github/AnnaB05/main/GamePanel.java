@@ -137,15 +137,18 @@ public class GamePanel extends JPanel {
         }
     }
 
+    public void updateGame() {
+        updateAnimationTick();
+        setAnimation(); // sets player animation based on input
+        updatePos(); // updates player position based on input
+    }
     /**
      * allows for drawing graphics on the panel
      */
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        updateAnimationTick();
-        setAnimation(); // sets player animation based on input
-        updatePos(); // updates player position based on input
+
 
         g.drawImage(animations[playerAction][aniIndex],(int)xDelta,(int)yDelta,90,80,null); //no need for observer at the moment
     }

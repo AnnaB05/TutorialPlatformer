@@ -31,6 +31,11 @@ public class Game implements Runnable {
         gameThread.start();
     }
 
+    public void update() {
+        gamePanel.updateGame();
+
+    }
+
     /**
      * this is the where the game loop will be
      */
@@ -59,7 +64,7 @@ public class Game implements Runnable {
             deltaF += (currentTime - previousTime) / timePerFrame; //calculates how many frames are needed
             previousTime = currentTime;
             if (deltaU >= 1) { //prevents lost time from being wasted and instead adds lost time to the next update
-                // update();
+                update();
                 updates++;
                 deltaU--;
             }
@@ -69,11 +74,7 @@ public class Game implements Runnable {
                 frames++;
                 deltaF--;
             }
-            /*if(now - lastFrame >= timePerFrame) { //if enough time has passed, renders the next frame
-                gamePanel.repaint();
-                lastFrame = now;
-                frames++;
-            }*/
+
 
 
             if(System.currentTimeMillis() - lastCheck >= 1000) {
