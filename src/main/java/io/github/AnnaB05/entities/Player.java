@@ -58,22 +58,7 @@ public class Player extends Entity {
 
     /// method for updating player position
     private void updatePos() {
-        if(moving) {
-            switch (playerDir) {
-                case LEFT:
-                    x -= 1;
-                    break;
-                case RIGHT:
-                    x += 1;
-                    break;
-                case UP:
-                    y -= 1;
-                    break;
-                case DOWN:
-                    y += 1;
-                    break;
-            }
-        }
+
     }
 
     /// method for handling the player character's animations
