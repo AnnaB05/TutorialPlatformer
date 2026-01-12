@@ -107,4 +107,18 @@ public class Game implements Runnable {
         }
 
     }
+
+
+
+
+    public Player getPlayer() {
+        return player;
+    }
+
+
+
+
+
+
+
 }

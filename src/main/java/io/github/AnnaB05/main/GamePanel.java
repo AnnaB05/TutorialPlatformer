@@ -21,7 +21,7 @@ import static io.github.AnnaB05.utilz.Constants.Directions.*;
  */
 public class GamePanel extends JPanel {
 
-
+    public Object getGame;
     private MouseInputs mouseInputs;
     private Game game;
 
@@ -61,6 +61,10 @@ public class GamePanel extends JPanel {
         super.paintComponent(g);
 
         game.render(g);
+    }
+
+    public Game getGame() {
+        return game;
     }
 
 
