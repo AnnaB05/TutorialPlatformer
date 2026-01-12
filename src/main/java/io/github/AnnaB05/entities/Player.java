@@ -32,14 +32,6 @@ public class Player extends Entity {
         g.drawImage(animations[playerAction][aniIndex],(int)x,(int)y,90,80,null); //no need for observer at the moment
     }
 
-    public void setDirection(int direction) {
-        this.playerDir = direction;
-        moving = true;
-    }
-
-    public void setMoving (boolean moving) {
-        this.moving = moving;
-    }
 
     //method for updating animation tick
     private void updateAnimationTick() {
