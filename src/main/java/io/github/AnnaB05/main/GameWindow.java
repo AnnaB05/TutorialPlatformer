@@ -24,6 +24,7 @@ public class GameWindow {
         jframe.addWindowFocusListener(new WindowFocusListener() {
             @Override
             public void windowGainedFocus(WindowEvent e) {
+                gamePanel.requestFocusInWindow(); // this should keep the game from disappearing when clicking outside the game window
 
 
             }
