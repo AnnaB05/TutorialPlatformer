@@ -60,6 +60,8 @@ public class Player extends Entity {
     /// method for updating player position
     private void updatePos() {
 
+        moving = false;
+
         // if statement for left and right movement
         if (left && !right) {
             x += playerSpeed;
