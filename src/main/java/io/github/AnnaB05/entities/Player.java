@@ -16,7 +16,7 @@ public class Player extends Entity {
     private int playerAction = IDLE;
     private boolean moving = false;
     private boolean left, right, up, down;
-    private float platerSpeed = 2.0f;
+    private float playerSpeed = 2.0f;
 
     public Player(float x, float y) {
         super(x, y);
@@ -60,10 +60,23 @@ public class Player extends Entity {
     /// method for updating player position
     private void updatePos() {
 
-        if(left && !right) {
+        // if statement for left and right movement
+        if (left && !right) {
+            x += playerSpeed;
+            moving = true;
+        } else if (right && !left) {
+            x -= playerSpeed;
+            moving = true;
 
         }
-
+        // if statement for up and down movement
+        if (up && !down) {
+            y -= playerSpeed;
+            moving = true;
+        } else if (down && !up) {
+            y += playerSpeed;
+            moving = true;
+        }
     }
 
     /// method for handling the player character's animations
