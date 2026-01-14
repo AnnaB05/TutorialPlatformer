@@ -24,9 +24,10 @@ public class Player extends Entity {
     }
 
     public void update() {
+        updatePos(); // updates player position based on input
         updateAnimationTick();
         setAnimation(); // sets player animation based on input
-        updatePos(); // updates player position based on input
+
     }
 
     public void render(Graphics g) {
@@ -69,8 +70,8 @@ public class Player extends Entity {
         } else if (right && !left) {
             x -= playerSpeed;
             moving = true;
-
         }
+
         // if statement for up and down movement
         if (up && !down) {
             y -= playerSpeed;
