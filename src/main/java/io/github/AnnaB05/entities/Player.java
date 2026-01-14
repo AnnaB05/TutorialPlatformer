@@ -65,10 +65,10 @@ public class Player extends Entity {
 
         // if statement for left and right movement
         if (left && !right) {
-            x += playerSpeed;
+            x -= playerSpeed;
             moving = true;
         } else if (right && !left) {
-            x -= playerSpeed;
+            x += playerSpeed;
             moving = true;
         }
 
