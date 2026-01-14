@@ -30,7 +30,7 @@ public class GameWindow {
 
             @Override
             public void windowLostFocus(WindowEvent e) {
-                System.out.println("BYEE");
+                gamePanel.getGame().windowFocusLost();
             }
         });
 
