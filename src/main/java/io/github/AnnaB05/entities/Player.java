@@ -16,6 +16,7 @@ public class Player extends Entity {
     private int playerAction = IDLE;
     private boolean moving = false;
     private boolean left, right, up, down;
+    private float platerSpeed = 2.0f;
 
     public Player(float x, float y) {
         super(x, y);
@@ -58,6 +59,10 @@ public class Player extends Entity {
 
     /// method for updating player position
     private void updatePos() {
+
+        if(left && !right) {
+
+        }
 
     }
 
