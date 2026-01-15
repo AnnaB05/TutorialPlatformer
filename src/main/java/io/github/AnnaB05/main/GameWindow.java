@@ -47,9 +47,9 @@ public class GameWindow {
 
     }
     /**
-     *  add system tray icon with restore and exit options
+     *  adds a system tray icon with restore and exit options
      * this should fix the issue of the game being inaccessible when minimized
-     * using a default icon for now since I'm not sure if I'm going to keep this implementation
+     * using a default icon for now since I'm not sure if I'm going to keep this implementation nor do I have  custom img ready
      **/
     private void addTrayIcon() {
         if (!SystemTray.isSupported()) return;
@@ -58,7 +58,7 @@ public class GameWindow {
         try {
             SystemTray tray = SystemTray.getSystemTray();
 
-            // creates a tiny default icon img since I'm not yet ready to use a custom one
+            // simple default icon
             Image image = new BufferedImage(16, 16, BufferedImage.TYPE_INT_ARGB);
             Graphics2D g2 = (Graphics2D) image.getGraphics();
             g2.setColor(Color.YELLOW);
