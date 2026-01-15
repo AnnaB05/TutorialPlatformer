@@ -14,7 +14,7 @@ public class Player extends Entity {
     private BufferedImage[][] animations; // array to hold idle animation frames
     private int aniTick, aniIndex, aniSpeed = 15;
     private int playerAction = IDLE;
-    private boolean moving = false;
+    private boolean moving = false, attacking = false;
     private boolean left, right, up, down;
     private float playerSpeed = 2.0f;
 
@@ -44,6 +44,7 @@ public class Player extends Entity {
             aniIndex ++;
             if(aniIndex >= GetSpriteAmount(playerAction)) {
                 aniIndex = 0;
+                attacking = false;
             }
         }
     }
@@ -55,6 +56,10 @@ public class Player extends Entity {
             playerAction = RUNNING;
         } else {
             playerAction = IDLE;
+        }
+
+        if(attacking) {
+            playerAction = ATTACK;
         }
     }
 
@@ -117,10 +122,16 @@ public class Player extends Entity {
         down = false;
     }
 
+    public boolean isAttacking () {
+        return attacking;
+    }
+    public void setAttacking (boolean attacking) {
+        this.attacking = attacking;
+    }
+
     public boolean isLeft() {
         return left;
     }
-
     public void setLeft(boolean left) {
         this.left = left;
     }
@@ -128,7 +139,6 @@ public class Player extends Entity {
     public boolean isRight() {
         return right;
     }
-
     public void setRight(boolean right) {
         this.right = right;
     }
@@ -136,7 +146,6 @@ public class Player extends Entity {
     public boolean isUp() {
         return up;
     }
-
     public void setUp(boolean up) {
         this.up = up;
     }
