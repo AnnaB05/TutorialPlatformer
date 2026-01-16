@@ -51,6 +51,7 @@ public class Player extends Entity {
 
     /// method that sets player animation based on input
     private void setAnimation() {
+
         int startAni = playerAction;
         if(moving) {
             playerAction = RUNNING;
@@ -60,6 +61,11 @@ public class Player extends Entity {
 
         if(attacking) {
             playerAction = ATTACK;
+        }
+
+        if(startAni != playerAction) {
+            aniIndex = 0;
+            aniTick = 0;
         }
     }
 
