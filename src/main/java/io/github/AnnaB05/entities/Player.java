@@ -1,5 +1,7 @@
 package io.github.AnnaB05.entities;
 
+import io.github.AnnaB05.utilz.loadSave;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -96,9 +98,8 @@ public class Player extends Entity {
     /// method for handling the player character's animations
     private void loadAnimations() {
 
-        InputStream is = getClass().getResourceAsStream("/YellowGuy.png");
-        try {
-            BufferedImage img = ImageIO.read(is);
+
+            BufferedImage img = loadSave.GetPlayerAtlas();
             animations = new BufferedImage[7][12]; // 7 animations, with the highest frame count being 12
             for (int j = 0; j < animations.length; j++) {
                 for (int i = 0; i < animations[j].length; i++) {
@@ -106,19 +107,10 @@ public class Player extends Entity {
                 }
             }
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                is.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
 
 
 
-    }
 
 
     public void resetDirBooleans() {
