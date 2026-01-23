@@ -31,7 +31,7 @@ public class Player extends Entity {
         setAnimation(); // sets player animation based on input
 
     }
-
+/// method for rendering player
     public void render(Graphics g) {
         g.drawImage(animations[playerAction][aniIndex],(int)x,(int)y,90,80,null); //no need for observer at the moment
     }
@@ -109,10 +109,7 @@ public class Player extends Entity {
 
         }
 
-
-
-
-
+        // getters and setters
     public void resetDirBooleans() {
         left = false;
         right = false;
