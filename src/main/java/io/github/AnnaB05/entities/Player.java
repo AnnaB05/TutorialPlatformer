@@ -99,7 +99,7 @@ public class Player extends Entity {
     private void loadAnimations() {
 
 
-            BufferedImage img = loadSave.GetPlayerAtlas();
+            BufferedImage img = loadSave.GetSpriteAtlas(loadSave.PLAYER_ATLAS);
             animations = new BufferedImage[7][12]; // 7 animations, with the highest frame count being 12
             for (int j = 0; j < animations.length; j++) {
                 for (int i = 0; i < animations[j].length; i++) {
